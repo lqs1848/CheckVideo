@@ -10,3 +10,5 @@ Test if video is playable 测试视频是否可播放
 能截到就是可以播放<br/>
 ffmpeg无法播放的视频会误判<br/>
 打开超时的也会判定为无法播放<br/>
+
+可识别文件类型为 .ts.tp.m2ts.tod.m2t.mts.avi.mov.mpg.mpeg.divx.RA.RM.RMVB.WMV.mkv.mp4.asf.m4v.vob.flv<br/>
