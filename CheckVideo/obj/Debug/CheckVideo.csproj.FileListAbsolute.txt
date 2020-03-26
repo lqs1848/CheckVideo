@@ -1,0 +1,10 @@
+F:\C#\AvMatchCheck\AvMatchCheck\bin\Debug\CheckVideo.exe.config
+F:\C#\AvMatchCheck\AvMatchCheck\bin\Debug\CheckVideo.exe
+F:\C#\AvMatchCheck\AvMatchCheck\bin\Debug\CheckVideo.pdb
+F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.csprojAssemblyReference.cache
+F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.csproj.ResolveComReference.cache
+F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\AvCoverDownloader.Form1.resources
+F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.Properties.Resources.resources
+F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.csproj.GenerateResource.cache
+F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.exe
+F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.pdb
