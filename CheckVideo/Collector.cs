@@ -66,53 +66,77 @@ namespace AvCoverDownloader
 
         public void Ffmpeg(string filePath)
         {
-            string path = AppDomain.CurrentDomain.BaseDirectory + "\\temp";
+            //string path = AppDomain.CurrentDomain.BaseDirectory + Path.DirectorySeparatorChar + "temp";
             string name = Path.GetFileName(filePath);
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            //if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+            string tempFile = filePath + ".checkVideo";
+            string strArg = "-ss 00:00:01 -i \"" + filePath + "\" -y -f mjpeg -t 0.001 -s 1x1 \"" + tempFile +"\"";
+            //string strArg = "-ss 00:00:01 -i \"S:\\test\\1.mkv\" -y \"S:\\test\\1.jpg\"";
+            strArg = strArg.Replace("\\\\", "\\");
+            ffmpeg(strArg);
 
-            string strArg = "-i \"" + filePath + "\" -y -f image2 -t 0.001 -ss 1 -s 1x1 \"" + path + "\\"+ name + ".jpg\"";
+            if (File.Exists(tempFile))
+            {
+                File.Delete(tempFile);
+                _syncContext.Post(OutLog, name);
+                return;
+            }
+            //ffmpeg -ss 00:50:00  -i RevolutionOS.rmvb sample.jpg  -r 1 -vframes 1 -an -vcodec mjpeg
+            //strArg = "-ss 00:00:01 -i \"" + filePath + "\" -y -f mjpeg -s 1x1 \"" + path + "\\" + name + ".jpg\"";
+            //strArg = "-ss 00:00:30 -i \"" + filePath + "\" \"" + path + "\\" + name + ".jpg\" -s 1x1 -r 1 -vframes 1 -an -vcodec mjpeg";
+            //"-ss 00:00:01 - i S:\test\1.mkv - f image2 - y S:\test\1.jpg"
+            //strArg = "-ss 1 -i \"" + filePath + "\" -y -f image2 -t 0.001 -s 1x1 \"" + path + "\\" + name + ".jpg\"";
+            //ffmpeg(strArg);
 
+            Thread.Sleep(10000);
+
+            if (File.Exists(tempFile))
+            {
+                File.Delete(tempFile);
+                _syncContext.Post(OutLog, name);
+                return;
+            }
+
+            ExeLog.WriteLog("nolist.txt",name+"\r\n");
+            _syncContext.Post(OutError, name);
+            
+        }
+
+        private void ffmpeg(string strArg) {
+            /*
+            Process p = new Process();//建立外部调用线程
+            p.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\DLL\\ffmpeg.exe";//要调用外部程序的绝对路径
+            p.StartInfo.Arguments = strArg;
+            p.StartInfo.UseShellExecute = false;//不使用操作系统外壳程序启动线程(一定为FALSE,详细的请看MSDN)
+            p.StartInfo.RedirectStandardError = false;//把外部程序错误输出写到StandardError流中(这个一定要注意,FFMPEG的所有输出信息,都为错误输出流,用StandardOutput是捕获不到任何消息的...这是我耗费了2个多月得出来的经验...mencoder就是用standardOutput来捕获的)
+            p.StartInfo.CreateNoWindow = true;//不创建进程窗口
+            //p.ErrorDataReceived += new DataReceivedEventHandler(Output);//外部程序(这里是FFMPEG)输出流时候产生的事件,这里是把流的处理过程转移到下面的方法中,详细请查阅MSDN
+            p.Start();//启动线程
+            //p.BeginErrorReadLine();//开始异步读取
+            p.WaitForExit(5000);//阻塞等待进程结束
+            p.Close();//关闭进程
+            p.Dispose();//释放资源
+            */
+            
             try
             {
                 using (Process p = new Process())
                 {
                     p.StartInfo.Arguments = strArg;
-                    p.StartInfo.RedirectStandardError = true;//把外部程序错误输出写到StandardError流中(这个一定要注意,FFMPEG的所有输出信息,都为错误输出流,用StandardOutput是捕获不到任何消息的...这是我耗费了2个多月得出来的经验...mencoder就是用standardOutput来捕获的)
+                    p.StartInfo.RedirectStandardError = false;//把外部程序错误输出写到StandardError流中(这个一定要注意,FFMPEG的所有输出信息,都为错误输出流,用StandardOutput是捕获不到任何消息的...这是我耗费了2个多月得出来的经验...mencoder就是用standardOutput来捕获的)
                     p.StartInfo.CreateNoWindow = true;//不创建进程窗口
                     p.StartInfo.UseShellExecute = false;
                     p.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\DLL\\ffmpeg.exe";//要调用外部程序的绝对路径
                     p.StartInfo.CreateNoWindow = true;
                     p.Start();
-                    p.WaitForExit(60*1000);
+                    p.WaitForExit(5 * 1000);
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
-
-            /*Process p = new Process();//建立外部调用线程
-            p.StartInfo.FileName = Directory.GetCurrentDirectory() + "\\DLL\\ffmpeg.exe";//要调用外部程序的绝对路径
-            p.StartInfo.Arguments = strArg;
-            p.StartInfo.UseShellExecute = false;//不使用操作系统外壳程序启动线程(一定为FALSE,详细的请看MSDN)
-            p.StartInfo.RedirectStandardError = true;//把外部程序错误输出写到StandardError流中(这个一定要注意,FFMPEG的所有输出信息,都为错误输出流,用StandardOutput是捕获不到任何消息的...这是我耗费了2个多月得出来的经验...mencoder就是用standardOutput来捕获的)
-            p.StartInfo.CreateNoWindow = false;//不创建进程窗口
-            p.ErrorDataReceived += new DataReceivedEventHandler(Output);//外部程序(这里是FFMPEG)输出流时候产生的事件,这里是把流的处理过程转移到下面的方法中,详细请查阅MSDN
-            p.Start();//启动线程
-            //p.BeginErrorReadLine();//开始异步读取
-            p.WaitForExit();//阻塞等待进程结束
-            p.Close();//关闭进程
-            p.Dispose();//释放资源*/
-
-            if (File.Exists(path + "\\" + name + ".jpg"))
-            {
-                _syncContext.Post(OutLog, name);
-            }
-            else
-            {
-                ExeLog.WriteLog("nolist.txt",name+"\r\n");
-                _syncContext.Post(OutError, name);
-            }
+            
         }
 
         private void Output(object sendProcess, DataReceivedEventArgs output)

@@ -8,3 +8,15 @@ F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.Properties.Resources.resour
 F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.csproj.GenerateResource.cache
 F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.exe
 F:\C#\AvMatchCheck\AvMatchCheck\obj\Debug\CheckVideo.pdb
+D:\Work\Github\CheckVideo\CheckVideo\bin\Debug\CheckVideo.exe.config
+D:\Work\Github\CheckVideo\CheckVideo\bin\Debug\CheckVideo.exe
+D:\Work\Github\CheckVideo\CheckVideo\bin\Debug\CheckVideo.pdb
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\CheckVideo.csproj.AssemblyReference.cache
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\CheckVideo.csproj.SuggestedBindingRedirects.cache
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\CheckVideo.csproj.ResolveComReference.cache
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\AvCoverDownloader.Form1.resources
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\CheckVideo.Properties.Resources.resources
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\CheckVideo.csproj.GenerateResource.cache
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\CheckVideo.csproj.CoreCompileInputs.cache
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\CheckVideo.exe
+D:\Work\Github\CheckVideo\CheckVideo\obj\Debug\CheckVideo.pdb

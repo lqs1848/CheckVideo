@@ -57,7 +57,7 @@ namespace AvCoverDownloader
             c.Start();
         }//method
 
-        string extNames = ".ts.tp.m2ts.tod.m2t.mts.avi.mov.mpg.mpeg.divx.RA.RM.RMVB.WMV.mkv.mp4.asf.m4v.vob.flv";
+        string extNames = ".ts.tp.m2ts.tod.m2t.mts.avi.mov.mpg.mpeg.divx.RA.RM.RMVB.WMV.mkv.mp4.asf.m4v.vob.flv.f4v.3gp";
 
         void Director(string dir)
         {
